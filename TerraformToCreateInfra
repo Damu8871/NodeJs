@@ -9,5 +9,5 @@ resource "aws_instance" "example" {
          Name = "AutoDeploy"
 		 
         }
-		user_data = "${file("D:/user_data/jenkins.sh")}"
+		user_data = "${file("D:/user_data/InstallJenkins.sh")}"
 }
