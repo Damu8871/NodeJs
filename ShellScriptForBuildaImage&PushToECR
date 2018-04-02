@@ -1,0 +1,13 @@
+echo "Push Acknowledged" #PushToaGitRepo
+
+docker build -t damutest . #BuildingaDockerImage
+
+docker tag damutest:latest xyxyxyxyxyxxyxyxyxyxy.dkr.ecr.ap-south-1.amazonaws.com/damutest:0.0.1
+
+eval $(aws ecr get-login --region ap-south-1 --no-include-email | sed "s|https://||") #Login
+
+docker push xyxyxyxyxyxxyxyxyxyxy.dkr.ecr.ap-south-1.amazonaws.com/damutest:0.0.1 #PushToECR-AWS
+
+if [[ $(docker images -q --filter "dangling=true") ]]; then docker rmi $(docker images --filter "dangling=true" -q --no-trunc); else echo "No dangling images found"; fi
+
+aws ecr list-images  --region ap-south-1 --repository-name damutest --query "imageIds[?type(imageTag)!='string'].[imageDigest]" --output text | while read line; do aws ecr batch-delete-image  --region ap-south-1 --repository-name damutest --image-ids imageDigest=$line; done
