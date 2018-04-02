@@ -1,0 +1,13 @@
+resource "aws_instance" "example" {
+        ami = "*****"
+        instance_type = "t2.micro"
+        key_name = "damodaran_dev_test"
+		subnet_id = "*****"
+        security_groups = ["**********"]
+		associate_public_ip_address = "true"
+        tags {
+         Name = "AutoDeploy"
+		 
+        }
+		user_data = "${file("D:/user_data/jenkins.sh")}"
+}
