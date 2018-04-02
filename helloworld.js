@@ -1,9 +1,14 @@
 var http = require('http');
 
-http.createServer(function(req, res){
+var userCount = 0;
+http.createServer(function (request, response) {
+    console.log('New connection');
+    userCount++;
 
-res.writeHead(200, {'content-type':'text/plain'});
-res.end('Hello World!');
-}).listen(8001);
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.write('Hello!\n');
+    response.write('We have had '+userCount+' visits!\n');
+    response.end();
+}).listen(8080);
 
-console.log('The Application is running on the port over 8001 yes !!');
+console.log('Server started');
