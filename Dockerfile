@@ -1,11 +1,12 @@
-FROM ubuntu:latest
+FROM ubuntu
 
 RUN apt-get update -y
+RUN apt-get install curl -y
+RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
 RUN apt-get install nodejs -y
-RUN apt-get install npm -y
-RUN nodejs -v
+CMD nodejs -v
 
-COPY . /
+COPY helloworld.js /
 
 CMD ["nodejs","server.js"]
-EXPOSE 9001
