@@ -6,7 +6,7 @@ http.createServer(function (request, response) {
     userCount++;
 
     response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.write('Hello!\n');
+    response.write('Hello Jai kuamr!\n');
     response.write('We have had '+userCount+' visits!\n');
     response.end();
 }).listen(8085);
