@@ -9,6 +9,6 @@ http.createServer(function (request, response) {
     response.write('Hello new!\n');
     response.write('We have had '+userCount+' visits!\n');
     response.end();
-}).listen(8085);
+}).listen(8084);
 
 console.log('Server started');
