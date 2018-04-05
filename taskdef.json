@@ -6,7 +6,14 @@
 "image": "466749146115.dkr.ecr.ap-south-1.amazonaws.com/damutest:0.0.1",
 "essential": true,
 "cpu":1024,
-"memory":300
+"memory":300,
+"portMappings": [
+                {
+                    "containerPort": 0, 
+                    "hostPort": 80, 
+                    "protocol": "tcp"
+                }
+            ]
 }
 ],
 "networkMode":"host",
