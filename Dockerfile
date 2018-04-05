@@ -9,4 +9,4 @@ CMD nodejs -v
 
 COPY helloworld.js /
 
-CMD ["nodejs","server.js"]
+CMD ["nodejs","helloworld.js"]
